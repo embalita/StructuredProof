@@ -1,0 +1,151 @@
+\documentclass[letterpaper,twoside,10pt]{report}
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage{lmodern} %Type1-font for non-english texts and characters
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%For loading graphic files
+
+%% Math Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+
+
+\begin{document}
+
+\pagestyle{empty} %No headings for the first pages.
+
+
+\pagestyle{plain} %Now display headings: headings / fancy / ...
+
+Proof. The square of any odd number is also odd. 
+
+\begin{enumerate} 
+	%Step 1
+	\item Let $x = 2a + 1$, where $a \in \mathbb{Z}$
+		%Proof of step 1
+		\begin{enumerate}	
+			\item By definition, an odd number is a number which is not even. An even number can be represented as $2k$ for some $k \in \mathbb{Z}$. If a number is not even, then it can be represented in the form $2k'+1$ where $k'\in\mmathbb{Z}$.
+			%Proof of the representation of an odd number
+			\begin{enumerate}	
+				\item Assume for a contradiction $\exists k\in\mathbb{Z}$ such that $2k = x$, and that $x=2k'+1$for some $k \in \mathbb{Z}$. Then:
+				\begin{align*}
+				2k &= 2k'+1\\
+				k &= k'+\dfrac{1}{2}
+				\end{align*}
+				But for $k'\in\mathbb{Z}$, then $k'+ \dfrac{1}{2}$ is not also an integer. QED.
+				\end{enumerate}
+		\end{enumerate}
+	%Step 2
+	\item $x^2 = 2a' + 1$, where $a' = (2a^2 + 2a)$
+		%Proof of step 2
+		\begin{enumerate}
+			\item Multiply each term and add like terms (a.k.a. "FOIL" or "First, outer, inner, last"): 
+				\begin{align*}
+					x^2 &= x \cdot x \\
+					&= (2a+1)(2a+1)\\
+					&= (2a)(2a) + (2a)(1) + (2a)(1) + (1) \\
+					&= 4a^2 + 2a + 2a + 1 \\
+					&= 4a^2 + 4a + 1 \\
+					&= 2(2a^2 + 2a) + 1 \\
+					&= 2a' + 1 \text{ where } a' = 2a^2 + 2a
+				\end{align*}
+		\end{enumerate}
+	%Step 3
+	\item QED
+		\begin{enumerate}
+			\item need to prove that $a' \in \mathbb{Z}$
+			\item By corollary 2, the converse of corollary 1 is also true. That is, any number which can be represented as $2a + 1$, where $a\in \mathbb{N}$, is considered odd.  
+		\end{enumerate}
+\end{enumerate}
+
+Corollary 1. Any odd number can be represented in the form $2a+1$ where $a \in \mathbb{N}$.
+An odd number is, by definition, a number which is not even. An even number can be represented as $2k$ for some $k \in \mathbb{Z}$. 
+
+%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ==> Write your text here or include other files.
+
+%\input{intro} %You need a file 'intro.tex' for this.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ==> Some hints are following:
+
+%\chapter{Some small hints}\label{hints}
+
+%\section{German Umlauts and other Language Specific Characters}\label{umlauts}
+%You can type german umlauts like 'ä', 'ö', or 'ü' directly in this file.
+%This is also true for other language specific characters like 'é', 'è' etc.
+%
+%There are problems with automatic hyphenation when using language
+%specific characters and OT1-encoded fonts. In this case, use a
+%T1-encoded Type1-font like the Latin Modern font family (\verb#\usepackage{lmodern}#).
+%
+%
+%\section{References}\label{references}
+%Using the commands \verb#\label{name}# and \verb#\ref{name}# you are able
+%to use references in your document. Advantage: You do not need to think
+%about numerations, because \LaTeX\ is doing that for you.
+%
+%For example, in section \ref{dividing} on page \pageref{dividing} hints for
+%dividing large documents are given.
+%
+%Certainly, references do also work for tables, figures, formulas\ldots
+%
+%Please notice, that \LaTeX\ usually needs more than one run (mostly 2) to
+%resolve those references correctly.
+%
+%
+%\section{Dividing Large Documents}\label{dividing}
+%You can divide your \LaTeX-Document into an arbitrary number of \TeX-Files
+%to avoid too big and therefore unhandy files (e.g. one file for every chapter).
+%
+%For this, you insert in your main file (this one) for every subfile
+%the command '\verb#\input{subfile}#'. This leads to the same behavior
+%as if the content of the subfile would be at the place of the \verb#\input#-Command.
+
+%% <== End of hints
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY AND OTHER LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A small distance to the other stuff in the table of contents (toc)
+%\addtocontents{toc}{\protect\vspace*{\baselineskip}}
+%
+%%% The Bibliography
+%%% ==> You need a file 'literature.bib' for this.
+%%% ==> You need to run BibTeX for this (Project | Properties... | Uses BibTeX)
+%%\addcontentsline{toc}{chapter}{Bibliography} %'Bibliography' into toc
+%%\nocite{*} %Even non-cited BibTeX-Entries will be shown.
+%%\bibliographystyle{alpha} %Style of Bibliography: plain / apalike / amsalpha / ...
+%%\bibliography{literature} %You need a file 'literature.bib' for this.
+%
+%%% The List of Figures
+%\clearpage
+%\addcontentsline{toc}{chapter}{List of Figures}
+%\listoffigures
+%
+%%% The List of Tables
+%\clearpage
+%\addcontentsline{toc}{chapter}{List of Tables}
+%\listoftables
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\appendix
+%%% ==> Write your text here or include other files.
+%
+%%\input{FileName} %You need a file 'FileName.tex' for this.
+
+
+\end{document}
+
