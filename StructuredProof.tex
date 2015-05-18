@@ -1,10 +1,10 @@
-\documentclass[letterpaper,twoside,10pt]{report}
+\documentclass[letterpaper,twoside,10pt]{article}
 
 %% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[USenglish]{babel} %francais, polish, spanish, ...
-\usepackage[T1]{fontenc}
-\usepackage[ansinew]{inputenc}
-\usepackage{lmodern} %Type1-font for non-english texts and characters
+%\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+%\usepackage[T1]{fontenc}
+%\usepackage[ansinew]{inputenc}
+%\usepackage{lmodern} %Type1-font for non-english texts and characters
 
 %% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} %%For loading graphic files
@@ -13,34 +13,34 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amsfonts}
+\usepackage[top=1in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
 
+
+\newcommand{\Z}{\mathbb{Z}} 
 
 \begin{document}
 
-\pagestyle{empty} %No headings for the first pages.
-
-
-\pagestyle{plain} %Now display headings: headings / fancy / ...
-
 Proof. The square of any odd number is also odd. 
+\vspace{.5cm}
+
+Sketch of the proof. It is straightforward to demonstrate that an odd number times itself is odd. However, if we are not willing to accept out of hand that a number $x$ is odd if and only if $x$ can be written in the form $2a+1$ for some integer $a$, then the proof is no longer trivial. This assertion relies on the division algorithm, which in turn relies on the well-ordering axiom. This serves to remind the reader that spaces which cannot be ordered, such as the complex numbers, cannot define the property of parity, but also that other more abstract spaces which can be ordered, such integer coordinates in Euclidean n-spaces, do indeed support an analogous concept of parity.
 
 \begin{enumerate} 
-	%Step 1
-	\item Let $x = 2a + 1$, where $a \in \mathbb{Z}$
-		%Proof of step 1
-		\begin{enumerate}	
-			\item By definition, an odd number is a number which is not even. An even number can be represented as $2k$ for some $k \in \mathbb{Z}$. If a number is not even, then it can be represented in the form $2k'+1$ where $k'\in\mmathbb{Z}$.
-			%Proof of the representation of an odd number
-			\begin{enumerate}	
-				\item Assume for a contradiction $\exists k\in\mathbb{Z}$ such that $2k = x$, and that $x=2k'+1$for some $k \in \mathbb{Z}$. Then:
-				\begin{align*}
-				2k &= 2k'+1\\
-				k &= k'+\dfrac{1}{2}
-				\end{align*}
-				But for $k'\in\mathbb{Z}$, then $k'+ \dfrac{1}{2}$ is not also an integer. QED.
-				\end{enumerate}
+	% Step 1: what exactly do we need to assume?
+	\item It suffices to assume that for an odd number $x$, 
+	% List of assumptions
+	\begin{enumerate}
+		\item if $x$ is not an even number, then $x$ is an odd number 
+		\item $x$ can be represented as $2k$ for some $k \in \mathbb{Z}$, if and only if $x$ is an even number
+		\item The division algorithm: For any $a$, $b\in\mathbb{Z}$, $\exists !$ $q \in \mathbb{Z}$, and $\exists !$ $r \in \mathbb{Z}$, with $0\leq r < b$ such that $x = b\cdot q + r$. (for which it suffices to assume the well-ordering principle, which states that every non-empty set of positive integers contains a least element)
+	\end{enumerate}
+	% Step 2: show that x can be represented as 2a+1
+	\item There exists an $a \in \mathbb{Z}$ such that $x = 2a+1$
+		% Proof of step 2
+		\begin{enumerate}
+			\item If $x$ is odd then by 1, $x$ is not even, so there does not exist a $m \in\Z$ such that $x=2m$. To show that there exists some $n \in\Z$ such that $x=2n+1$, assume for a contradiction that there does not exist an $n\in\Z$ such that $x=2n+1$. By the division algorithm, for $b=2$, then there exists $q\in\Z$ such that either $x=2q$ or $x=2q+1$. Therefore, by contradiction, there must exist some $n\in\Z$ such that $x=2n+1$ if $x$ is odd. 
 		\end{enumerate}
-	%Step 2
+	% Step 3: show that x^2 is also odd
 	\item $x^2 = 2a' + 1$, where $a' = (2a^2 + 2a)$
 		%Proof of step 2
 		\begin{enumerate}
@@ -57,94 +57,19 @@ Proof. The square of any odd number is also odd.
 		\end{enumerate}
 	%Step 3
 	\item QED
+		% Show that if a is an integer then 2a^2 + 2a is also an integer
+		% Show that if a number can be represented as 2a'+1 then that number is odd.  
 		\begin{enumerate}
-			\item need to prove that $a' \in \mathbb{Z}$
-			\item By corollary 2, the converse of corollary 1 is also true. That is, any number which can be represented as $2a + 1$, where $a\in \mathbb{N}$, is considered odd.  
+			\item For all $a, b \in\mathbb{Z}$ and $n \in \mathbb{N}$, then $a+b \in \mathbb{Z}$, $a\cdot b \in \mathbb{Z}$, and $a^n \in \mathbb{Z}$, therefore, $a' \in \mathbb{Z}$. 
+			\item Any number which can be represented as $2m+1$ where $m\in\Z$ is not even, therefore that number is odd. Assume for a contradiction that $x=2m+1$ and that $x$ is also even, that is that $x=2n$ for some $n\in\Z$ Then:
+			\begin{align*}
+			2m+1 &=2n\\
+			1 &= 2n-2m\\
+			1 &= 2(n-m)
+			\end{align*}
+			Because $n-m \in\Z$, this implies that 2 divides 1, which is a contradiction. Therefore, we can conclude that any number which can be written as $2m+1$ must be odd. 
 		\end{enumerate}
 \end{enumerate}
-
-Corollary 1. Any odd number can be represented in the form $2a+1$ where $a \in \mathbb{N}$.
-An odd number is, by definition, a number which is not even. An even number can be represented as $2k$ for some $k \in \mathbb{Z}$. 
-
-%% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ==> Write your text here or include other files.
-
-%\input{intro} %You need a file 'intro.tex' for this.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ==> Some hints are following:
-
-%\chapter{Some small hints}\label{hints}
-
-%\section{German Umlauts and other Language Specific Characters}\label{umlauts}
-%You can type german umlauts like 'ä', 'ö', or 'ü' directly in this file.
-%This is also true for other language specific characters like 'é', 'è' etc.
-%
-%There are problems with automatic hyphenation when using language
-%specific characters and OT1-encoded fonts. In this case, use a
-%T1-encoded Type1-font like the Latin Modern font family (\verb#\usepackage{lmodern}#).
-%
-%
-%\section{References}\label{references}
-%Using the commands \verb#\label{name}# and \verb#\ref{name}# you are able
-%to use references in your document. Advantage: You do not need to think
-%about numerations, because \LaTeX\ is doing that for you.
-%
-%For example, in section \ref{dividing} on page \pageref{dividing} hints for
-%dividing large documents are given.
-%
-%Certainly, references do also work for tables, figures, formulas\ldots
-%
-%Please notice, that \LaTeX\ usually needs more than one run (mostly 2) to
-%resolve those references correctly.
-%
-%
-%\section{Dividing Large Documents}\label{dividing}
-%You can divide your \LaTeX-Document into an arbitrary number of \TeX-Files
-%to avoid too big and therefore unhandy files (e.g. one file for every chapter).
-%
-%For this, you insert in your main file (this one) for every subfile
-%the command '\verb#\input{subfile}#'. This leads to the same behavior
-%as if the content of the subfile would be at the place of the \verb#\input#-Command.
-
-%% <== End of hints
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% BIBLIOGRAPHY AND OTHER LISTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% A small distance to the other stuff in the table of contents (toc)
-%\addtocontents{toc}{\protect\vspace*{\baselineskip}}
-%
-%%% The Bibliography
-%%% ==> You need a file 'literature.bib' for this.
-%%% ==> You need to run BibTeX for this (Project | Properties... | Uses BibTeX)
-%%\addcontentsline{toc}{chapter}{Bibliography} %'Bibliography' into toc
-%%\nocite{*} %Even non-cited BibTeX-Entries will be shown.
-%%\bibliographystyle{alpha} %Style of Bibliography: plain / apalike / amsalpha / ...
-%%\bibliography{literature} %You need a file 'literature.bib' for this.
-%
-%%% The List of Figures
-%\clearpage
-%\addcontentsline{toc}{chapter}{List of Figures}
-%\listoffigures
-%
-%%% The List of Tables
-%\clearpage
-%\addcontentsline{toc}{chapter}{List of Tables}
-%\listoftables
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% APPENDICES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\appendix
-%%% ==> Write your text here or include other files.
-%
-%%\input{FileName} %You need a file 'FileName.tex' for this.
 
 
 \end{document}
